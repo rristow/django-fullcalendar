@@ -35,6 +35,7 @@ OPTIONS = """{  timeFormat: "H:mm",
                 },
             }"""
 
+
 def index(request):    
     event_url = 'all_events/'
     return render(request, 'demo/index.html', {'calendar_config_options': calendar_options(event_url, OPTIONS)})
@@ -42,3 +43,11 @@ def index(request):
 def all_events(request):
     events = CalendarEvent.objects.all()
     return HttpResponse(events_to_json(events), content_type='application/json')
+
+# from django.shortcuts import render # <-- with this line
+#
+#
+# def home_view(request):
+#     """Home view callable, for the home page."""
+#     context = {'foo': 'name', 'bar': 'num'}
+#     return render(request, 'lending_library/home.html', context=context)

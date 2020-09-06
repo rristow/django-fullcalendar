@@ -13,10 +13,11 @@ def convert_field_names(event_list):
     Converts atribute names from Python code convention to the
     attribute names used by FullCalendar 
     """
+    new_list = {}
     for event in event_list:
-        for key in event.keys():
-            event[snake_to_camel_case(key)] = event.pop(key)
-    return event_list
+        for key, value in event.items():
+            new_list[snake_to_camel_case(key)] = value
+    return new_list
 
 
 def snake_to_camel_case(s):
